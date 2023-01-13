@@ -1,4 +1,4 @@
-export default function Footer() {
+const Footer=()=> {
   return (
     <footer>
       <a href="">
@@ -9,3 +9,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export {Footer}

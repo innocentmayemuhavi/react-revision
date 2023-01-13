@@ -1,9 +1,16 @@
 
 import ProductData from "./ProductData"
+import {ChristmassDealsEl} from "../../../ChristmassDealsEl"
+import { useContext,useState } from "react"
+import { AuthContext } from "../context"
 
-import ChristmassDealsEl from "./ChristmassDealsEl"
-export default function ChristmassDeals(){
-    const prods=ProductData.map((prod)=>{
+
+
+const ChristmassDeals=()=>{
+  const {SeachVal,setSearchval}=useContext(AuthContext)
+  
+  const filtered=ProductData.filter((fill)=>fill.title.toLocaleLowerCase().includes(`${SeachVal}`))
+    const prods=filtered.map((prod)=>{
         return(
 <ChristmassDealsEl key={prod.id} {...prod}/>
         )
@@ -15,3 +22,6 @@ export default function ChristmassDeals(){
       </div>  
     )
 }
+
+
+export {ChristmassDeals}

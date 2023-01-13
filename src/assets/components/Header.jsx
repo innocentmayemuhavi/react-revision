@@ -1,14 +1,30 @@
-import React from "react";
+import { useState,useContext,useEffect } from "react";
+import { AuthContext } from "../context";
+import { CartComponent } from "./CartComponent";
+const Header = () => {
+  const [ac, setAc] = useState(false);
+  const [lgn, setLgn] = useState(true);
+ const {SeachVal,setSearchval}=useContext(AuthContext)
 
-export default function Header() {
-  const [ac, setAc] = React.useState(false);
-  const [lgn, setLgn] = React.useState(true);
-  function Acc() {
+  const Acc = () => {
     setAc((prevState) => !prevState);
   }
-  function Log(){
+  const Log = () => {
     setLgn(prevState=>!prevState)
   }
+
+  const UpdateVal=(event)=>{
+    setSearchval(event.target.value)
+    console.log(SeachVal)
+
+  }
+
+  useEffect(()=>{
+    console.log(SeachVal)
+  },[])
+
+
+
   return (
     <header>
       <div className="logo">
@@ -21,6 +37,7 @@ export default function Header() {
           className="search"
           type="search"
           placeholder="Search for Products"
+          onChange={UpdateVal}
         />
       </div>
       <div className="act">
@@ -45,11 +62,9 @@ export default function Header() {
               User id:<span className="grey"></span>
             </p>
           )}
-          {lgn &&<div className="crt"><img  src="./src/assets/images/cart.png" />
-          
+         <div className="crt"><img  src="./src/assets/images/cart.png" />
+        <CartComponent/>
         </div>
-      
-        }
        {lgn&&<p>cart</p>}
           {lgn === false ? (
             <button className="lgn" onClick={Log}>Login</button>
@@ -58,6 +73,8 @@ export default function Header() {
           )}
         </div>
       )}
+     
     </header>
   );
 }
+export {Header}
