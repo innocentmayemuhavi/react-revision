@@ -17,15 +17,15 @@ const CartComponent = () => {
   const removefromcart = (id) => {
     setData_from_searver(prev=>prev)
     RemovingAnItem(data_from_searver,id)
-    
+    setData_from_searver(prev=>prev)
 setCart(prev=>{
   return prev.map((data)=>{
     return data_from_searver
   })
 })
-    localStorage.setItem("Cart", JSON.stringify(data_from_searver));
-  
 
+    localStorage.setItem("Cart", JSON.stringify(data_from_searver));
+    setData_from_searver(prev=>prev)
   };
 
 
