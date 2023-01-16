@@ -62,10 +62,15 @@ footer {
   box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
   bottom: 0;
 }
-.addtocart:focus {
+
+.addtocart:active{
+
   background-color: black;
   color: rgb(200, 241, 210);
-  border: 0.23em solid blue;
+  border: 0.27em solid blue;
+}
+.addtocart:hover{
+  border: 0.29em solid blue;
 }
 .status {
   position: absolute;
@@ -159,4 +164,20 @@ h3 {
   right: 2px;
   position: absolute;
   border-radius: 100%;
+}
+.closecart{
+  background-color: rgb(200, 241, 210);
+  padding: 4px 5px;
+  width: 25%;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
+  bottom: 0;
+
+}
+.closecart:active{
+  
+  background-color: black;
+  color: rgb(200, 241, 210);
+  border: 0.27em solid blue;
 }

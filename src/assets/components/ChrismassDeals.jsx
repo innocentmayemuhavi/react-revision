@@ -1,12 +1,16 @@
 
 import ProductData from "./ProductData"
-import {ChristmassDealsEl} from "../../../ChristmassDealsEl"
+import {ChristmassDealsEl} from "./ChristmassDealsEl"
 import { useContext,useState } from "react"
 import { AuthContext } from "../context"
+import { CartComponent } from "./CartComponent"
+
+
 
 
 
 const ChristmassDeals=()=>{
+  const {showCartPage,setshowcartpage}=useContext(AuthContext)
   const {SeachVal,setSearchval}=useContext(AuthContext)
   
   const filtered=ProductData.filter((fill)=>fill.title.toLocaleLowerCase().includes(`${SeachVal}`))
@@ -15,12 +19,15 @@ const ChristmassDeals=()=>{
 <ChristmassDealsEl key={prod.id} {...prod}/>
         )
     })
-    return(
-      <div className="deals">
+    return<div>{showCartPage?<div>
+       <p>Your Cart...</p>
+    <hr/>
+      <CartComponent/>
+      </div>:<div className="deals">
        
-{prods}
-      </div>  
-    )
+    {prods}
+          </div> } </div> 
+    
 }
 
 

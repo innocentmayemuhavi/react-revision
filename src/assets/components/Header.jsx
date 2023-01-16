@@ -1,16 +1,18 @@
 import { useState,useContext,useEffect } from "react";
 import { AuthContext } from "../context";
-import { CartComponent } from "./CartComponent";
+
 const Header = () => {
   const [ac, setAc] = useState(false);
-  const [lgn, setLgn] = useState(true);
+  const {isLoggedin, setLoggedin} = useContext(AuthContext);
  const {SeachVal,setSearchval}=useContext(AuthContext)
+ const {showCartPage,setshowcartpage}=useContext(AuthContext)
+ const {showAccount,setShowAccount}=useContext(AuthContext)
 
   const Acc = () => {
-    setAc((prevState) => !prevState);
+    setShowAccount((prevState) => !prevState);
   }
   const Log = () => {
-    setLgn(prevState=>!prevState)
+    setLoggedin(prevState=>!prevState)
   }
 
   const UpdateVal=(event)=>{
@@ -48,25 +50,26 @@ const Header = () => {
           src="../src/assets/images/Account.jpeg"
         />
       </div>
-      {ac && (
+      {showAccount && (
         <div className="account">
           <img onClick={Acc} src="./src/assets/images/cancel.png" />
           <p>Welcome to our E-market...</p>
-          {lgn && (
+          {isLoggedin && (
             <p>
               Name:<span className="grey"></span>
             </p>
           )}
-          {lgn && (
+          {isLoggedin && (
             <p>
               User id:<span className="grey"></span>
             </p>
           )}
-         <div className="crt"><img  src="./src/assets/images/cart.png" />
-        <CartComponent/>
+         <div className="crt"  onClick={()=>{
+          setshowcartpage(prev=>!prev)
+         }}><img  src="./src/assets/images/cart.png" />
         </div>
-       {lgn&&<p>cart</p>}
-          {lgn === false ? (
+       {isLoggedin&&<p>cart</p>}
+          {isLoggedin === false ? (
             <button className="lgn" onClick={Log}>Login</button>
           ) : (
             <button className="lgn" onClick={Log}>Logout</button>

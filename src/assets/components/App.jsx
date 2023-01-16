@@ -3,15 +3,13 @@ import { ChristmassDeals } from "./ChrismassDeals";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 const App = () => {
-  return <AuthProvider>
-    <Header/>
-    <ChristmassDeals/>
-    <p>Your Cart...</p>
-    <hr/>
-   
-     <Footer/>
-
-  </AuthProvider>;
+  return (
+    <AuthProvider>
+      <Header />
+      <ChristmassDeals />
+      <Footer />
+    </AuthProvider>
+  );
 };
 
-export {App}
+export { App };
