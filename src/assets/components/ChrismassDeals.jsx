@@ -23,10 +23,14 @@ const ChristmassDeals=()=>{
        <p>Your Cart...</p>
     <hr/>
       <CartComponent/>
-      </div>:<div className="deals">
+      </div>:
+      <div>
+           <p>New Year Deals...</p>
+      <hr/>
+      <div className="deals">
        
     {prods}
-          </div> } </div> 
+          </div> </div>} </div> 
     
 }
 

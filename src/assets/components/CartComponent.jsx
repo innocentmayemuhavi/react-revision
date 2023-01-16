@@ -15,14 +15,31 @@ const CartComponent = () => {
     }
 
   const removefromcart = (id) => {
+    setData_from_searver(prev=>prev)
     RemovingAnItem(data_from_searver,id)
+    
+setCart(prev=>{
+  return prev.map((data)=>{
+    return data_from_searver
+  })
+})
     localStorage.setItem("Cart", JSON.stringify(data_from_searver));
-  setData_from_searver(prev=>prev)
+  
+
   };
 
 
   useEffect(()=>{
 console.log("Run")
+
+setCart(prev=>{
+  return prev.map((data)=>{
+    return data_from_searver
+  })
+})
+console.log(Cart)
+localStorage.setItem("Cart", JSON.stringify(Cart));
+
   },[data_from_searver])
   const render = data_from_searver.map((props) => {
     return (
@@ -31,6 +48,7 @@ console.log("Run")
           className="remove-from-cart"
           onClick={() =>
             removefromcart(props.id)
+           
           }
         >
           <img src="./src/assets/images/cancel.png" />
