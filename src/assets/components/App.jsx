@@ -9,6 +9,7 @@ const App = () => {
     <AuthProvider>
       <Header />
     <ChristmassDeals/>
+    
       <Footer />
     </AuthProvider>
   );

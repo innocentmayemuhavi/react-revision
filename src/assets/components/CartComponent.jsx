@@ -62,6 +62,7 @@ localStorage.setItem("Cart", JSON.stringify(Cart));
         <p>
           Price:<span className="grey">{props.price}</span>
         </p>
+      
       </div>
     );
   });
