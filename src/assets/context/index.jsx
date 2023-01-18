@@ -13,12 +13,19 @@ const AuthContext = createContext({
   setshowcartpage: () => {},
   isLoggedin: false,
   setLoggedin: () => {},
-  showAccount:true,
-  setShowAccount:()=>{},
-  showAdded:false,
-  setShowAdded:()=>{},
-  isExisting:false,
-  setisExisting:()=>{}
+  showAccount: true,
+  setShowAccount: () => {},
+  showAdded: false,
+  setShowAdded: () => {},
+  isExisting: false,
+  setisExisting: () => {},
+  productCard: {
+    prodpic: "picture",
+    title: "Product",
+    price: 30,
+    Quantity: 2,
+  },
+  setProductCard: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -30,9 +37,15 @@ const AuthProvider = ({ children }) => {
   const [Added, setAdded] = useState({});
   const [showCartPage, setshowcartpage] = useState(false);
   const [isLoggedin, setLoggedin] = useState(false);
-  const [showAccount,setShowAccount]=useState(true)
-  const [showAdded,setShowAdded]=useState(false)
-  const [isExisting,setisExisting]=useState(false)
+  const [showAccount, setShowAccount] = useState(true);
+  const [showAdded, setShowAdded] = useState(false);
+  const [isExisting, setisExisting] = useState(false);
+  const [productCard, setProductCard] = useState({
+    prodpic: "picture",
+    title: "Product",
+    price: 30,
+    Quantity: 2,
+  });
 
   return (
     <AuthContext.Provider
@@ -54,7 +67,9 @@ const AuthProvider = ({ children }) => {
         showAdded,
         setShowAdded,
         isExisting,
-        setisExisting
+        setisExisting,
+        productCard,
+        setProductCard,
       }}
     >
       {children}

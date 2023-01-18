@@ -4,7 +4,7 @@ import { AuthContext } from "../context";
 import { CartComponent } from "./CartComponent";
 
 const ChristmassDealsEl = (props) => {
-  let count = false;
+  let isExisting = false;
   let { Cart, setCart } = useContext(AuthContext);
   
   const { Added, setAdded } = useContext(AuthContext);
@@ -20,13 +20,13 @@ const ChristmassDealsEl = (props) => {
 
     if (Consists) {
       console.log("its here");
-      count = true;
+      isExisting = true;
     } else {
       console.log("not here");
-      count = false;
+      isExisting = false;
     }
 
-    if (count) {
+    if (isExisting) {
       setAdded((prev) => {
         return {
           title: "Already Here",
