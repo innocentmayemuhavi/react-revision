@@ -6,9 +6,9 @@ const CartComponent = () => {
   const { data_from_searver, setData_from_searver } = useContext(AuthContext);
   const { showCartPage, setshowcartpage } = useContext(AuthContext);
   const  RemovingAnItem=(data_from_searver,id)=>{
-    const ind=data_from_searver.findIndex((o)=>o.id===id)
-    if(ind>-1){
-      data_from_searver.splice(ind,1)
+    const index=data_from_searver.findIndex((o)=>o.id===id)
+    if(index>-1){
+      data_from_searver.splice(index,1)
     }
   
     return data_from_searver

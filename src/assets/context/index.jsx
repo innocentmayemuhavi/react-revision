@@ -13,8 +13,12 @@ const AuthContext = createContext({
   setshowcartpage: () => {},
   isLoggedin: false,
   setLoggedin: () => {},
-  showAccount:false,
-  setShowAccount:()=>{}
+  showAccount:true,
+  setShowAccount:()=>{},
+  showAdded:false,
+  setShowAdded:()=>{},
+  isExisting:false,
+  setisExisting:()=>{}
 });
 
 const AuthProvider = ({ children }) => {
@@ -26,7 +30,9 @@ const AuthProvider = ({ children }) => {
   const [Added, setAdded] = useState({});
   const [showCartPage, setshowcartpage] = useState(false);
   const [isLoggedin, setLoggedin] = useState(false);
-  const [showAccount,setShowAccount]=useState(false)
+  const [showAccount,setShowAccount]=useState(true)
+  const [showAdded,setShowAdded]=useState(false)
+  const [isExisting,setisExisting]=useState(false)
 
   return (
     <AuthContext.Provider
@@ -44,7 +50,11 @@ const AuthProvider = ({ children }) => {
         isLoggedin,
         setLoggedin,
         showAccount,
-        setShowAccount
+        setShowAccount,
+        showAdded,
+        setShowAdded,
+        isExisting,
+        setisExisting
       }}
     >
       {children}

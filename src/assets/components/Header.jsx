@@ -2,12 +2,13 @@ import { useState,useContext,useEffect } from "react";
 import { AuthContext } from "../context";
 
 const Header = () => {
-  const [ac, setAc] = useState(false);
+
   const {isLoggedin, setLoggedin} = useContext(AuthContext);
  const {SeachVal,setSearchval}=useContext(AuthContext)
  const {showCartPage,setshowcartpage}=useContext(AuthContext)
  const {showAccount,setShowAccount}=useContext(AuthContext)
-
+ const { data_from_searver, setData_from_searver } = useContext(AuthContext);
+ const { showAdded, setShowAdded } = useContext(AuthContext);
   const Acc = () => {
     setShowAccount((prevState) => !prevState);
   }
@@ -66,7 +67,10 @@ const Header = () => {
           )}
          <div className="crt"  onClick={()=>{
           setshowcartpage(prev=>!prev)
+          setShowAdded(false)
+
          }}><img  src="./src/assets/images/cart.png" />
+         {data_from_searver.length>0?<div className="NumberOfCartElements">{data_from_searver.length}</div>:""}
         </div>
        {isLoggedin&&<p>cart</p>}
           {isLoggedin === false ? (
