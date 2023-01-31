@@ -3,7 +3,7 @@
 export default [
     {
       id: 1,
-      prodpic: "./src/assets/images/kabraaas.jpeg",
+      prodpic: "./images/kabraaas.jpeg",
       title: "Kabrass Sugar",
       quantity: 2,
       price: 230,
@@ -12,7 +12,7 @@ export default [
     },
     {
       id: 2,
-      prodpic: "./src/assets/images/indomie.jpg",
+      prodpic: "./images/indomie.jpg",
       title: "Indomie",
       price: 25,
       quantity: 1,
@@ -21,7 +21,7 @@ export default [
     },
     {
       id: 3,
-      prodpic: "./src/assets/images/packshot_cof_cup.jpg",
+      prodpic: "./images/packshot_cof_cup.jpg",
       title: "Cups",
       quantity: 1,
       price: 470,
@@ -30,7 +30,7 @@ export default [
     },
     {
       id: 4,
-      prodpic: "./src/assets/images/pishori.jpeg",
+      prodpic: "./images/pishori.jpeg",
       title: "Pishori Rice",
       quantity: 2,
       price: 520,
@@ -39,7 +39,7 @@ export default [
     },
     {
       id: 5,
-      prodpic: "./src/assets/images/plates.jpeg",
+      prodpic: "./images/plates.jpeg",
       title: "Glass Plates",
       quantity: 4,
       price: 230,
@@ -48,7 +48,7 @@ export default [
     },
     {
       id: 6,
-      prodpic: "./src/assets/images/DETTOL-OG-SOAP.jpg",
+      prodpic: "./images/DETTOL-OG-SOAP.jpg",
       title: "Detol Soap",
       price: 654,
       quantity: 2,
@@ -57,7 +57,7 @@ export default [
     },
     {
       id: 7,
-      prodpic: "./src/assets/images/Daawat-Spaghetti-Green-Label.jpg",
+      prodpic: "./images/Daawat-Spaghetti-Green-Label.jpg",
       title: "Dawati Suparghetti",
       quantity: 1,
       price: 180,
@@ -66,7 +66,7 @@ export default [
     },
     {
       id: 8,
-      prodpic: "./src/assets/images/Aerial.jpeg",
+      prodpic: "./images/Aerial.jpeg",
       title: "Ariel",
       quantity: 2,
       price: 670,
@@ -76,7 +76,7 @@ export default [
   
     {
       id: 9,
-      prodpic: "./src/assets/images/COoking oil.jpeg",
+      prodpic: "./images/COoking oil.jpeg",
       title: "Fresh fry",
       quantity: 2,
       price: 622,
@@ -86,7 +86,7 @@ export default [
   
     {
       id: 10,
-      prodpic: "./src/assets/images/Cooking oil10lts.jpeg",
+      prodpic: "./images/Cooking oil10lts.jpeg",
       title: "Post Man cooking oil",
       quantity: 1,
       price: 1100,
@@ -96,7 +96,7 @@ export default [
   
     {
       id: 11,
-      prodpic: "./src/assets/images/f9.jpeg",
+      prodpic: "./images/f9.jpeg",
       title: "F9 Ear Pods",
       quantity: 1,
       price: 1670,
@@ -106,7 +106,7 @@ export default [
   
     {
       id: 12,
-      prodpic: "./src/assets/images/iphone14.jpeg",
+      prodpic: "./images/iphone14.jpeg",
       title: "IPhone 14",
       quantity: 1,
       price: 345007,
@@ -115,7 +115,7 @@ export default [
     },
     {
       id: 13,
-      prodpic: "./src/assets/images/j4.jpeg",
+      prodpic: "./images/j4.jpeg",
       title: "Jordan 4 PSG Air",
       quantity: 1,
       price: 4620,
@@ -125,7 +125,7 @@ export default [
   
     {
       id: 14,
-      prodpic: "./src/assets/images/laptopbag.png",
+      prodpic: "./images/laptopbag.png",
       title: "Premium Laptop Bag",
       quantity: 1,
       price: 2381,
@@ -135,7 +135,7 @@ export default [
   
     {
       id: 15,
-      prodpic: "./src/assets/images/f9.jpeg",
+      prodpic: "./images/f9.jpeg",
       title: "F9 Ear Pods",
       quantity: 1,
       price: 1430,
@@ -145,7 +145,7 @@ export default [
   
     {
       id: 16,
-      prodpic: "./src/assets/images/menshoes.jpeg",
+      prodpic: "./images/menshoes.jpeg",
       title: "New Leather Men Shoes",
       quantity: 1,
       price: 1989,
@@ -155,7 +155,7 @@ export default [
   
     {
       id: 17,
-      prodpic: "./src/assets/images/Nivea.jpeg",
+      prodpic: "./images/Nivea.jpeg",
       title: "Nivea New Body Lotion.",
       quantity: 1,
       price: 930,
@@ -165,7 +165,7 @@ export default [
   
     {
       id: 18,
-      prodpic: "./src/assets/images/laptopbag.png",
+      prodpic: "./images/laptopbag.png",
       title: "New laptop Bag",
       quantity: 1,
       price: 2270,
@@ -175,7 +175,7 @@ export default [
   
     {
       id: 19,
-      prodpic: "./src/assets/images/nokia2.4.jpeg",
+      prodpic: "./images/nokia2.4.jpeg",
       title: "Nokia 2.4 new",
       quantity: 1,
       price: 18340,
@@ -184,7 +184,7 @@ export default [
     },
     {
       id: 20,
-      prodpic: "./src/assets/images/SoundBar.jpeg",
+      prodpic: "./images/SoundBar.jpeg",
       title: "Sound Bar  17''",
       quantity: 1,
       price: 74000,
@@ -194,7 +194,7 @@ export default [
   
     {
       id: 21,
-      prodpic: "./src/assets/images/suitcase.jpeg",
+      prodpic: "./images/suitcase.jpeg",
       title: "Brown Travel Suit Case",
       quantity: 1,
       price: 4698,
@@ -205,7 +205,7 @@ export default [
   
     {
       id: 22,
-      prodpic: "./src/assets/images/sumsungzflip.jpeg",
+      prodpic: "./images/sumsungzflip.jpeg",
       title: "Sumsung Galaxy Zflip",
       quantity: 1,
       price: 79877,

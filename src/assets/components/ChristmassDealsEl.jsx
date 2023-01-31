@@ -6,7 +6,7 @@ import { CartComponent } from "./CartComponent";
 const ChristmassDealsEl = (props) => {
   let isExisting = false;
   let { Cart, setCart } = useContext(AuthContext);
-  
+
   const { Added, setAdded } = useContext(AuthContext);
   let { data_from_searver, setData_from_searver } = useContext(AuthContext);
 

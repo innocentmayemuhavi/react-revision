@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <header>
       <div className="logo">
-        <img src="./src/assets/images/sp-logo.jpg"></img>
+        <img src="./images/sp-logo.jpg"></img>
         <h3>SuperPass-E-Market</h3>
       </div>
 
@@ -48,12 +48,12 @@ const Header = () => {
         <img
           className="accountpic"
           onClick={Acc}
-          src="../src/assets/images/Account.jpeg"
+          src="./images/Account.jpeg"
         />
       </div>
       {showAccount && (
         <div className="account">
-          <img onClick={Acc} src="./src/assets/images/cancel.png" />
+          <img onClick={Acc} src="./images/cancel.png" />
           <p>Welcome to our E-market...</p>
           {isLoggedin && (
             <p>
@@ -69,7 +69,7 @@ const Header = () => {
           setshowcartpage(prev=>!prev)
           setShowAdded(false)
 
-         }}><img  src="./src/assets/images/cart.png" />
+         }}><img  src="./images/cart.png" />
          {data_from_searver.length>0?<div className="NumberOfCartElements">{data_from_searver.length}</div>:""}
         </div>
        {isLoggedin&&<p>cart</p>}

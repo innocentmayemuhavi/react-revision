@@ -51,7 +51,7 @@ localStorage.setItem("Cart", JSON.stringify(Cart));
            
           }
         >
-          <img src="./src/assets/images/cancel.png" />
+          <img src="./images/cancel.png" />
         </div>
 
         <img src={props.prodpic} />

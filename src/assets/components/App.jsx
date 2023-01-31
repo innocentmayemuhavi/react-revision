@@ -10,7 +10,8 @@ const App = () => {
   return (
     <AuthProvider>
       <Header />
-    <ProductCard/>
+   <Deals/>
+   <ChristmassDeals/>
       <Footer />
     </AuthProvider>
   );
