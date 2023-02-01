@@ -1,6 +1,7 @@
 
 import { AuthContext } from "../context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 
 const AddedToCArt=()=>{
@@ -15,12 +16,10 @@ const AddedToCArt=()=>{
      <button onClick={()=>{
       setShowAdded(false)
       
-    }} >Cancel</button><button onClick={()=>{
+    }} >Cancel</button>
+    <Link to={"/cart"}><button className="view-cart" onClick={()=>{
       setShowAdded(false)
-   setshowcartpage(true)
-
-     
-    }} >View Cart</button>
+    }}>View Cart</button></Link>
    
   </div>
 }

@@ -115,7 +115,7 @@ export default [
     },
     {
       id: 13,
-      prodpic: "./images/j4.jpeg",
+      prodpic: "./images/J4.jpeg",
       title: "Jordan 4 PSG Air",
       quantity: 1,
       price: 4620,

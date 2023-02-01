@@ -31,12 +31,7 @@ const DealsEl=(props)=>{
     }
 
     if (isExisting) {
-      setAdded((prev) => {
-        return {
-          title: "Already Here",
-          price: 0,
-        };
-      });
+     
     } else {
       Cart.push({
         id: id,
@@ -46,12 +41,7 @@ const DealsEl=(props)=>{
       });
       localStorage.setItem("Cart", JSON.stringify(Cart));
 
-      setAdded((prev) => {
-        return {
-          title: title,
-          price: price,
-        };
-      });
+     
     }
   };
 
@@ -61,7 +51,7 @@ const DealsEl=(props)=>{
 
   const CartItem = (id, title, price, prodpic) => {
     CheckingIfItExists(id, prodpic, title, price);
-    setShowAdded(true);
+    
   };
     
       return (

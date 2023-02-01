@@ -1,6 +1,9 @@
 import { AuthContext } from "../context";
 import { useContext } from "react";
 import { useEffect } from "react";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+import { Link } from "react-router-dom";
 const CartComponent = () => {
   const { Cart, setCart } = useContext(AuthContext);
   const { data_from_searver, setData_from_searver } = useContext(AuthContext);
@@ -43,6 +46,7 @@ localStorage.setItem("Cart", JSON.stringify(Cart));
   },[data_from_searver])
   const render = data_from_searver.map((props) => {
     return (
+    
       <div className="cart-product" key={props.id}>
         <div
           className="remove-from-cart"
@@ -58,27 +62,36 @@ localStorage.setItem("Cart", JSON.stringify(Cart));
         <p>
           Name:<span className="grey">{props.title}</span>
         </p>
-
         <p>
-          Price:<span className="grey">{props.price}</span>
+          Quantity:<span className="grey">{props.Quantity}</span>
         </p>
+        <p>
+          Price:<span className="grey">Ksh.{props.price*props.Quantity}</span>
+        </p>
+        
       
       </div>
     );
   });
   return (
+    <>
+    <Header/>
     <div>
       <p>Your Cart Has {data_from_searver.length} Item(s)</p>
       <div className="deals">{render}</div>
-      <button
+     <div className="cart-btns">
+     <Link to={"/"}> <button
         className="closecart"
-        onClick={() => {
-          setshowcartpage((prev) => !prev);
-        }}
       >
         {data_from_searver.length == 0 ? "Add Items" : "Close Cart"}
-      </button>
+      </button></Link>
+      <button className="checkout-btn">Check-Out</button>
+     
+     </div>
     </div>
+    <Footer/>
+    </>
+    
   );
 };
 

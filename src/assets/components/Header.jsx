@@ -1,4 +1,5 @@
 import { useState,useContext,useEffect } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context";
 
 const Header = () => {
@@ -65,11 +66,7 @@ const Header = () => {
               User id:<span className="grey"></span>
             </p>
           )}
-         <div className="crt"  onClick={()=>{
-          setshowcartpage(prev=>!prev)
-          setShowAdded(false)
-
-         }}><img  src="./images/cart.png" />
+         <div className="crt" ><Link to={"/cart"}><img  className="cart-image" src="./images/cart.png" /></Link>
          {data_from_searver.length>0?<div className="NumberOfCartElements">{data_from_searver.length}</div>:""}
         </div>
        {isLoggedin&&<p>cart</p>}
