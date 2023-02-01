@@ -8,6 +8,11 @@ const CartComponent = () => {
   const { Cart, setCart } = useContext(AuthContext);
   const { data_from_searver, setData_from_searver } = useContext(AuthContext);
   const { showDialogue, setShowDialogue} = useContext(AuthContext);
+
+  localStorage.setItem("Cart",JSON.stringify({}))
+  
+
+  localStorage.setItem("Cart",JSON.stringify(data_from_searver))
   setData_from_searver(prev=>prev)
   const  RemovingAnItem=(data_from_searver,id)=>{
     const index=data_from_searver.findIndex((o)=>o.id===id)
@@ -36,12 +41,6 @@ setCart(prev=>{
   useEffect(()=>{
 console.log("Run")
 
-setCart(prev=>{
-  return prev.map((data)=>{
-    return data_from_searver
-  })
-})
-console.log(Cart)
 localStorage.setItem("Cart", JSON.stringify(data_from_searver));
 
   },[data_from_searver])
