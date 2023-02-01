@@ -12,9 +12,7 @@ const Deals = () => {
   const filtered = ProductData.filter((fill) =>
     fill.title.toLocaleLowerCase().includes(`${SeachVal}`)
   );
-  const prods = filtered.map((prod) => {
-    return <ChristmassDealsEl key={prod.id} {...prod} />;
-  });
+  const prods = filtered.map((prod) =><ChristmassDealsEl key={prod.id} {...prod} />)
   return (
   <>
   {showDialogue&&<Dialog/>}

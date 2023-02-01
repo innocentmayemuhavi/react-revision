@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
 import { CartComponent } from "../cart/CartComponent";
+import "./deal.css"
 
 const ChristmassDealsEl = (props) => {
   let isExisting = false;
@@ -61,8 +62,11 @@ const ChristmassDealsEl = (props) => {
 
   return (
     <div className="deal">
-      <img src={props.prodpic} />
+     <div className="deal-image">
+     <img src={props.prodpic} />
+     </div>
       {props.available === 0 && <div className="status">SOLD OUT</div>}
+      <div className="deal-content">
       <p>
         Name:<span className="grey">{props.title}</span>
       </p>
@@ -72,15 +76,18 @@ const ChristmassDealsEl = (props) => {
       <p>
         Price:<span className="grey">{props.price}</span>
       </p>
-
-      <button
+      </div>
+<section className="deal-footer">
+  
+<button
         onClick={() =>
           CartItem(props.id, props.title, props.price, props.prodpic)
         }
-        className="addtocart"
+        className="add-to-cart"
       >
         Add To Cart
       </button>
+</section>
     </div>
   );
 };
