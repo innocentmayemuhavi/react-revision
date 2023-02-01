@@ -11,22 +11,18 @@ const AuthContext = createContext({
   setData_from_searver: () => {},
   isLoggedin: false,
   setLoggedin: () => {},
-  showAccount: true,
+  showAccount: false,
   setShowAccount: () => {},
-  showAdded: false,
-  setShowAdded: () => {},
+  showDialogue: false,
+  setShowDialogue: () => {},
   isExisting: false,
   setisExisting: () => {},
-  productCard: {
-    id:0,
-    prodpic: "picture",
-    title: "Product",
-    price: 3000,
-    Quantity: 2,
-  },
+  productCard: {},
   setProductCard: () => {},
-  showProductCard:true,
-  setShowProductCard:()=>{}
+  showProductCard:false,
+  setShowProductCard:()=>{},
+  dialogData:{},
+  setdialogData:()=>{}
 });
 
 const AuthProvider = ({ children }) => {
@@ -38,18 +34,12 @@ const AuthProvider = ({ children }) => {
   const [Added, setAdded] = useState({});
 
   const [isLoggedin, setLoggedin] = useState(false);
-  const [showAccount, setShowAccount] = useState(true);
-  const [showAdded, setShowAdded] = useState(false);
+  const [showAccount, setShowAccount] = useState(false);
+  const [showDialogue, setShowDialogue] = useState(false);
   const [isExisting, setisExisting] = useState(false);
-  const [productCard, setProductCard] = useState({
-    id:0,
-    prodpic: "picture",
-    title: "Product",
-    price: 3000,
-    Quantity:1,
-  });
-  const[showProductCard,setShowProductCard]=useState(true)
-
+  const [productCard, setProductCard] = useState({});
+  const[showProductCard,setShowProductCard]=useState(false)
+  const[dialogData,setdialogData]=useState({})
   return (
     <AuthContext.Provider
       value={{
@@ -65,14 +55,16 @@ const AuthProvider = ({ children }) => {
         setLoggedin,
         showAccount,
         setShowAccount,
-        showAdded,
-        setShowAdded,
         isExisting,
         setisExisting,
         productCard,
         setProductCard,
         showProductCard,
-        setShowProductCard
+        setShowProductCard,
+        showDialogue,
+        setShowDialogue,
+        dialogData,
+        setdialogData
       }}
     >
       {children}

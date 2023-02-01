@@ -1,9 +1,9 @@
 
-import ProductData from "./ProductData"
+import ProductData from "../SystemData/ProductData"
 import {ChristmassDealsEl} from "./ChristmassDealsEl"
 import { useContext,useState } from "react"
-import { AuthContext } from "../context"
-import { CartComponent } from "./CartComponent"
+import { AuthContext } from "../../context"
+import { CartComponent } from "../cart/CartComponent"
 
 
 

@@ -1,7 +1,7 @@
-import { ChristmassDeals } from "../ChrismassDeals"
-import { Deals } from "../Deals"
-import { Footer } from "../Footer"
-import { Header } from "../Header"
+import { ChristmassDeals } from "../Christmass/ChrismassDeals"
+import { Deals } from "../Deals/Deals"
+import { Footer } from "../Footer/Footer"
+import { Header } from "../Header/Header"
 
 const Homepage=()=>{
 

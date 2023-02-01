@@ -1,13 +1,14 @@
-import { AuthContext } from "../context";
+import { AuthContext } from "../../context";
 import { useContext } from "react";
 import { useEffect } from "react";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 const CartComponent = () => {
   const { Cart, setCart } = useContext(AuthContext);
   const { data_from_searver, setData_from_searver } = useContext(AuthContext);
-  const { showCartPage, setshowcartpage } = useContext(AuthContext);
+  const { showDialogue, setShowDialogue} = useContext(AuthContext);
+  setData_from_searver(prev=>prev)
   const  RemovingAnItem=(data_from_searver,id)=>{
     const index=data_from_searver.findIndex((o)=>o.id===id)
     if(index>-1){
@@ -41,7 +42,7 @@ setCart(prev=>{
   })
 })
 console.log(Cart)
-localStorage.setItem("Cart", JSON.stringify(Cart));
+localStorage.setItem("Cart", JSON.stringify(data_from_searver));
 
   },[data_from_searver])
   const render = data_from_searver.map((props) => {
@@ -82,6 +83,7 @@ localStorage.setItem("Cart", JSON.stringify(Cart));
      <div className="cart-btns">
      <Link to={"/"}> <button
         className="closecart"
+        onClick={()=>setShowDialogue(false)}
       >
         {data_from_searver.length == 0 ? "Add Items" : "Close Cart"}
       </button></Link>

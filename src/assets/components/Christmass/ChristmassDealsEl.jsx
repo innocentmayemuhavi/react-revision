@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context";
-import { CartComponent } from "./CartComponent";
+import { AuthContext } from "../../context";
+import { CartComponent } from "../cart/CartComponent";
 
 const ChristmassDealsEl = (props) => {
   let isExisting = false;
@@ -27,16 +27,21 @@ const ChristmassDealsEl = (props) => {
     }
 
     if (isExisting) {
-      setProductCard(prev=>{
-        return{
-          id:id
-        }
-      })
+      setProductCard((prev) => {
+        return {
+          id:id,
+          Message:" Already  Exists!!",
+          prodpic:prodpic,
+          title: title,
+          price: price,
+        };
+      });
     }
      else {
       setProductCard((prev) => {
         return {
           id:id,
+          Message:"Placing Order...",
           prodpic:prodpic,
           title: title,
           price: price,

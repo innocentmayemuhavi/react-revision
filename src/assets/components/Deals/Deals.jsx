@@ -1,12 +1,12 @@
-import ProductData from "./ProductData";
-import { ChristmassDealsEl } from "./ChristmassDealsEl";
+import ProductData from "../SystemData/ProductData";
+import { ChristmassDealsEl } from "../Christmass/ChristmassDealsEl";
 import { useContext, useState } from "react";
-import { AuthContext } from "../context";
-import { CartComponent } from "./CartComponent";
-import  {ProductCard}  from "../components/productcard/index";
+import { AuthContext } from "../../context";
+import  {ProductCard}  from "../productcard/index";
+import { Dialog } from "../Dialogue";
 
 const Deals = () => {
-  const { showCartPage, setshowcartpage } = useContext(AuthContext);
+  const { showDialogue, setShowDialogue} = useContext(AuthContext);
   const { SeachVal, setSearchval } = useContext(AuthContext);
   const { showProductCard,setShowProductCard} = useContext(AuthContext);
   const filtered = ProductData.filter((fill) =>
@@ -17,6 +17,7 @@ const Deals = () => {
   });
   return (
   <>
+  {showDialogue&&<Dialog/>}
 {showProductCard&&<ProductCard/>}
   <div>
       <p>Our Deals...</p>
