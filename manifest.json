@@ -1,0 +1,15 @@
+
+{
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "name": "Superpass-e-market",
+    "action": {
+        
+        "default_icon":"./public/images/sp-logo.jpg"
+    },
+    "permissions": [
+        "tabs","memory"
+
+        
+    ]
+}

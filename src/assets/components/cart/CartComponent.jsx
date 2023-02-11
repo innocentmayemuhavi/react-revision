@@ -4,7 +4,7 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { Checkout } from "../Checkout/Index";
-import "./index.css"
+import "./index.css";
 const CartComponent = () => {
   const { Cart, setCart, showCheckout, setShowCheckout, setShowDialogue } =
     useContext(AuthContext);
@@ -62,7 +62,7 @@ const CartComponent = () => {
       <Header />
       <div>
         <p>Your Cart Has {Cart.items.length} Item(s)</p>
-        <p className="d-flex justfy-content-left">total:{Cart.total}</p>
+        <p className="d-flex justfy-content-left">Total Amount:{Cart.total}</p>
         <div className="deals">{render}</div>
 
         <div className="cart-btns">
