@@ -1,0 +1,91 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(246, 251, 246);
+  }
+  .logo > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+  .logo {
+    display: flex;
+    width: 130px;
+    align-items: center;
+  }
+  .search {
+    padding: 2px;
+    border-radius: 17px;
+    text-align: center;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 97%;
+  }
+  .accountpic {
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    margin: 0 5%;
+  }
+  .act {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .account {
+    position: absolute;
+    z-index: 1001;
+    right: 3px;
+    top: 4px;
+    width: 30%;
+    max-height: 24%;
+    background-color: ghostwhite;
+    box-shadow: 1px 1px 8px rgb(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+    padding: 6px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .account > p {
+    margin: 3px;
+  }
+  .account > img {
+    height: 20px;
+    width: 20px;
+    right: 2px;
+    position: absolute;
+    border-radius: 100%;
+  }
+  .lgn {
+    background-color: green;
+    width: auto;
+    border-radius: 17px;
+    font-weight: 600;
+    text-align: center;
+    padding: 3px 10px;
+  }
+  
+.NumberOfCartElements {
+    border-radius: 100%;
+    border: 2px solid red;
+    width: 12px;
+    height: 12px;
+    object-fit: cover;
+    padding: 2px;
+    align-content: center;
+    text-align: center;
+    position: absolute;
+    right: 40%;
+    font-size: 12px;
+    font-weight: 900;
+    color: red;
+    background-color: aliceblue;
+  }
+  

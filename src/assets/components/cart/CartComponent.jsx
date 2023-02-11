@@ -4,31 +4,31 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { Checkout } from "../Checkout/Index";
+import "./index.css"
 const CartComponent = () => {
-
-  const { Cart,setCart, showCheckout, setShowCheckout, setShowDialogue } =
+  const { Cart, setCart, showCheckout, setShowCheckout, setShowDialogue } =
     useContext(AuthContext);
-    
-    
-  const removing = (id,newArr) => {
+  const removing = (id, item) => {
     const index = Cart.items.findIndex((prev) => prev.id === id);
     if (index > -1) {
       Cart.items.splice(index, 1);
     }
+
     return Cart;
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (id, item) => {
     console.log(id);
-    removing(id);
-    localStorage.setItem("Cart",JSON.stringify(Cart))
+    removing(id, item);
+
+    localStorage.setItem("Cart", JSON.stringify(Cart));
   };
   const render = Cart.items.map((props) => {
     return (
       <div className="deal" key={props.id}>
         <div
           className="remove-from-cart"
-          onClick={() => removeFromCart(props.id)}
+          onClick={() => removeFromCart(props.id, { ...props })}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,9 @@ const CartComponent = () => {
       <Header />
       <div>
         <p>Your Cart Has {Cart.items.length} Item(s)</p>
+        <p className="d-flex justfy-content-left">total:{Cart.total}</p>
         <div className="deals">{render}</div>
+
         <div className="cart-btns">
           <Link to={"/"}>
             {" "}

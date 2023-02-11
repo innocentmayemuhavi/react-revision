@@ -1,14 +1,9 @@
 import React from "react";
 import { useContext, useEffect } from "react";
 import { AuthContext, AuthProvider } from "../../context";
-
+import "./index.css"
 const ProductCard = (id, prodpic, title, price) => {
-  const { productCard, setProductCard } = useContext(AuthContext);
-  const { showProductCard, setShowProductCard } = useContext(AuthContext);
-  const { dialogData, setdialogData } = useContext(AuthContext);
-  const { showDialogue, setShowDialogue } = useContext(AuthContext);
-  const { Cart, setCart } = useContext(AuthContext);
-
+  const { productCard, setProductCard,setShowProductCard,setdialogData, setShowDialogue,Cart, setCart   } = useContext(AuthContext);
   useEffect(() => {
     console.log(productCard);
   }, [productCard]);

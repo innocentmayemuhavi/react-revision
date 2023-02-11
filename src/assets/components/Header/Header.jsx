@@ -1,12 +1,19 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
-
+import "./index.css";
 const Header = () => {
-  const { isLoggedin, setLoggedin,User,SeachVal, setSearchval, showAccount, setShowAccount,Cart } = useContext(AuthContext);
-
-
- const Acc = () => {
+  const {
+    isLoggedin,
+    setLoggedin,
+    User,
+    SeachVal,
+    setSearchval,
+    showAccount,
+    setShowAccount,
+    Cart,
+  } = useContext(AuthContext);
+  const Acc = () => {
     setShowAccount((prevState) => !prevState);
   };
   const Log = () => {
@@ -60,9 +67,7 @@ const Header = () => {
               <img className="cart-image" src="./images/cart.png" />
             </Link>
             {Cart.items.length > 0 ? (
-              <div className="NumberOfCartElements">
-                {Cart.items.length}
-              </div>
+              <div className="NumberOfCartElements">{Cart.items.length}</div>
             ) : (
               ""
             )}
