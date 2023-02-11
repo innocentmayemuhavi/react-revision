@@ -1,13 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({
   SeachVal: "",
   setSearchval: () => {},
-  Cart: [],
+  Cart: {
+    items: [],
+    total: 0,
+  },
+  User: {
+    name: "Innocent_Maye_Muhavi",
+    id: 40185261,
+    Residence: "Ngong",
+    email: "innocentmuhavimaye@gmail.com",
+    phone: "0796331359",
+  },
+  setUser: () => {},
   setCart: () => {},
   Added: {},
   setAdded: () => {},
-  data_from_searver: JSON.parse(localStorage.getItem("Cart")),
+
   setData_from_searver: () => {},
   isLoggedin: false,
   setLoggedin: () => {},
@@ -19,18 +30,21 @@ const AuthContext = createContext({
   setisExisting: () => {},
   productCard: {},
   setProductCard: () => {},
-  showProductCard:false,
-  setShowProductCard:()=>{},
-  dialogData:{},
-  setdialogData:()=>{}
+  showProductCard: false,
+  setShowProductCard: () => {},
+  dialogData: {},
+  setdialogData: () => {},
+  showCheckout: false,
+  setShowCheckout: () => {},
 });
 
 const AuthProvider = ({ children }) => {
   const [SeachVal, setSearchval] = useState("");
-  const [Cart, setCart] = useState([]);
-  const [data_from_searver, setData_from_searver] = useState(
-    JSON.parse(localStorage.getItem("Cart"))
-  );
+  const [Cart, setCart] = useState({
+    items: [],
+    total: 0,
+  });
+
   const [Added, setAdded] = useState({});
 
   const [isLoggedin, setLoggedin] = useState(false);
@@ -38,8 +52,33 @@ const AuthProvider = ({ children }) => {
   const [showDialogue, setShowDialogue] = useState(false);
   const [isExisting, setisExisting] = useState(false);
   const [productCard, setProductCard] = useState({});
-  const[showProductCard,setShowProductCard]=useState(false)
-  const[dialogData,setdialogData]=useState({})
+  const [showProductCard, setShowProductCard] = useState(false);
+  const [dialogData, setdialogData] = useState({});
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [User, setUser] = useState({
+    name: "Innocent_Maye_Muhavi",
+    id: 40185261,
+    Residence: "Ngong",
+    email: "innocentmuhavimaye@gmail.com",
+    phone: "0796331359",
+  });
+  useEffect(() => {
+    const savedCart =
+      localStorage.getItem("Cart") === "undefined"
+        ? {
+            items: [],
+            total: 0,
+          }
+        : JSON.parse(localStorage.getItem("Cart"));
+   setCart(savedCart)
+
+  }, []);
+
+  useEffect(()=>{
+if(Cart.items){
+  localStorage.setItem("Cart",JSON.stringify(Cart))
+}
+  },[Cart])
   return (
     <AuthContext.Provider
       value={{
@@ -49,8 +88,6 @@ const AuthProvider = ({ children }) => {
         setAdded,
         Cart,
         setCart,
-        data_from_searver,
-        setData_from_searver,     
         isLoggedin,
         setLoggedin,
         showAccount,
@@ -64,7 +101,11 @@ const AuthProvider = ({ children }) => {
         showDialogue,
         setShowDialogue,
         dialogData,
-        setdialogData
+        setdialogData,
+        showCheckout,
+        setShowCheckout,
+        User,
+        setUser,
       }}
     >
       {children}

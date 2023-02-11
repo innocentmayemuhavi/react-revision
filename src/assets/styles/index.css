@@ -67,7 +67,7 @@ footer {
   right: 3px;
   top: 4px;
   width: 30%;
-  max-height: 23%;
+  max-height: 24%;
   background-color: ghostwhite;
   box-shadow: 1px 1px 8px rgb(0, 0, 0, 0.3);
   box-sizing: border-box;
@@ -75,6 +75,9 @@ footer {
   font-weight: 300;
   font-size: 14px;
   padding: 6px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .account > p {
   margin: 3px;
@@ -88,11 +91,11 @@ footer {
 }
 .lgn {
   background-color: green;
-  width: 33%;
+  width: auto;
   border-radius: 17px;
   font-weight: 600;
   text-align: center;
-  padding: 1.5%;
+  padding: 3px 10px;
 }
 .crt {
   display: flex;
@@ -125,22 +128,24 @@ h3 {
   position: relative;
 }
 
-.remove-from-cart > img {
+.remove-from-cart {
   height: 20px;
   width: 20px;
-  right: 2px;
+  right: 10px;
   position: absolute;
   border-radius: 100%;
+  top: 2px;
 }
 .closecart,
 .checkout-btn {
   background-color: rgb(200, 241, 210);
   padding: 4px 5px;
-  width: 25%;
+  width: 35%;
   border-radius: 14px;
   font-weight: 700;
   box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
   bottom: 0;
+  max-width: 150px;
   margin: 1px 7px;
 }
 .checkout-btn:active,
@@ -259,61 +264,6 @@ h3 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
-}
-.dialog-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1001;
-  top: 0;
-  left: 0;
-  right: 0;
-  border: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.dialog-content {
-  background-color: #fff;
-  border-radius: 6px;
-  padding: 10px;
-  width: 100%;
-  max-width: 70%;
-  position: relative;
-  z-index: 1001;
-  overflow: hidden;
-  border-radius: 9px;
-  align-items: center;
-  text-align: center;
-}
-.dialog-header {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-}
-.dialog-header svg:hover {
-  fill: blue;
-  cursor: pointer;
-}
-.dialog-buttons {
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  margin-top: 7px;
-  justify-content: space-around;
-}
-.dialog-buttons > button {
-  background-color: rgb(200, 241, 210);
-  padding: 4px 5px;
-  width: 30%;
-  border-radius: 14px;
-  font-weight: 700;
-  box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
-  bottom: 0;
-  margin: 1px;
 }
 
 p {

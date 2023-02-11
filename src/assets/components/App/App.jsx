@@ -6,17 +6,7 @@ import Homepage from "../homepage";
 
 const App = () => {
 
-  const r1=localStorage.getItem(1)
 
-  if(r1<1){
-    localStorage.setItem("Cart",JSON.stringify([{
-
-    }]))
-  }
-  else{
-    console.log("done")
-  }
- 
   return (
     <BrowserRouter>
       <AuthProvider>

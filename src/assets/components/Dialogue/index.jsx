@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
-
+import "./index.css"
 const Dialog = () => {
     const {dialogData,setdialogData}=useContext(AuthContext)
     const { showDialogue, setShowDialogue} = useContext(AuthContext);

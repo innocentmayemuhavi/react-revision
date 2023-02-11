@@ -1,64 +1,59 @@
 import { AuthContext } from "../../context";
-import { useContext } from "react";
-import { useEffect } from "react";
+import { useContext, useState } from "react";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
+import { Checkout } from "../Checkout/Index";
 const CartComponent = () => {
-  const { Cart, setCart } = useContext(AuthContext);
-  const { data_from_searver, setData_from_searver } = useContext(AuthContext);
-  const { showDialogue, setShowDialogue } = useContext(AuthContext);
 
-  localStorage.setItem("Cart", JSON.stringify({}));
-
-  localStorage.setItem("Cart", JSON.stringify(data_from_searver));
-  setData_from_searver((prev) => prev);
-  const RemovingAnItem = (data_from_searver, id) => {
-    const index = data_from_searver.findIndex((o) => o.id === id);
+  const { Cart,setCart, showCheckout, setShowCheckout, setShowDialogue } =
+    useContext(AuthContext);
+    
+    
+  const removing = (id,newArr) => {
+    const index = Cart.items.findIndex((prev) => prev.id === id);
     if (index > -1) {
-      data_from_searver.splice(index, 1);
+      Cart.items.splice(index, 1);
     }
-    return data_from_searver;
-  };
-  const removefromcart = (id) => {
-    setData_from_searver((prev) => prev);
-    RemovingAnItem(data_from_searver, id);
-    setData_from_searver((prev) => prev);
-    setCart((prev) => {
-      return prev.map((data) => {
-        return data_from_searver;
-      });
-    });
-
-    localStorage.setItem("Cart", JSON.stringify(data_from_searver));
-    setData_from_searver((prev) => prev);
+    return Cart;
   };
 
-  useEffect(() => {
-    console.log("Run");
-
-    localStorage.setItem("Cart", JSON.stringify(data_from_searver));
-  }, [data_from_searver]);
-  const render = data_from_searver.map((props) => {
+  const removeFromCart = (id) => {
+    console.log(id);
+    removing(id);
+    localStorage.setItem("Cart",JSON.stringify(Cart))
+  };
+  const render = Cart.items.map((props) => {
     return (
-      <div className="cart-product" key={props.id}>
+      <div className="deal" key={props.id}>
         <div
           className="remove-from-cart"
-          onClick={() => removefromcart(props.id)}
+          onClick={() => removeFromCart(props.id)}
         >
-          <img src="./images/cancel.png" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path d="M5.72 5.72a.75.75 0 0 1 1.06 0L12 10.94l5.22-5.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L13.06 12l5.22 5.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L12 13.06l-5.22 5.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.94 12 5.72 6.78a.75.75 0 0 1 0-1.06Z"></path>
+          </svg>
         </div>
-
-        <img src={props.prodpic} />
-        <p>
-          Name:<span className="grey">{props.title}</span>
-        </p>
-        <p>
-          Quantity:<span className="grey">{props.Quantity}</span>
-        </p>
-        <p>
-          Price:<span className="grey">Ksh.{props.price * props.Quantity}</span>
-        </p>
+        <div className="deal-image">
+          <img src={props.prodpic} />
+        </div>
+        <div className="deal-content">
+          <p>
+            Name:<span className="grey">{props.title}</span>
+          </p>
+          <p>
+            Quantity:<span className="grey">{props.Quantity}</span>
+          </p>
+          <p>
+            Price:
+            <span className="grey">Ksh.{props.price * props.Quantity}</span>
+          </p>
+        </div>
       </div>
     );
   });
@@ -66,7 +61,7 @@ const CartComponent = () => {
     <>
       <Header />
       <div>
-        <p>Your Cart Has {data_from_searver.length} Item(s)</p>
+        <p>Your Cart Has {Cart.items.length} Item(s)</p>
         <div className="deals">{render}</div>
         <div className="cart-btns">
           <Link to={"/"}>
@@ -75,12 +70,18 @@ const CartComponent = () => {
               className="closecart"
               onClick={() => setShowDialogue(false)}
             >
-              {data_from_searver.length == 0 ? "Add Items" : "Close Cart"}
+              {Cart.items.length == 0 ? "Add Items" : "Close Cart"}
             </button>
           </Link>
-          <button className="checkout-btn">Check-Out</button>
+          <button
+            className="checkout-btn"
+            onClick={() => setShowCheckout((prev) => !prev)}
+          >
+            {showCheckout ? "Cancel" : "Show"} Check-Out
+          </button>
         </div>
       </div>
+      {showCheckout && <Checkout />}
       <Footer />
     </>
   );

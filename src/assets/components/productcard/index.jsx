@@ -5,12 +5,10 @@ import { AuthContext, AuthProvider } from "../../context";
 const ProductCard = (id, prodpic, title, price) => {
   const { productCard, setProductCard } = useContext(AuthContext);
   const { showProductCard, setShowProductCard } = useContext(AuthContext);
-  const {dialogData,setdialogData}=useContext(AuthContext)
-  const { showDialogue, setShowDialogue} = useContext(AuthContext);
-  let { Cart, setCart } = useContext(AuthContext);
-  let { data_from_searver, setData_from_searver } = useContext(AuthContext);
-  let isExisting = false;
- 
+  const { dialogData, setdialogData } = useContext(AuthContext);
+  const { showDialogue, setShowDialogue } = useContext(AuthContext);
+  const { Cart, setCart } = useContext(AuthContext);
+
   useEffect(() => {
     console.log(productCard);
   }, [productCard]);
@@ -22,79 +20,60 @@ const ProductCard = (id, prodpic, title, price) => {
     });
     console.log(productCard);
   };
-  if (data_from_searver) {
-    Cart = data_from_searver;
-  }
 
-  const UpdateOrder = (data_from_searver, id) => {
-    const index = data_from_searver.findIndex((o) => o.id === productCard.id);
+  const updateOrder = (id) => {
+    const index = Cart.items.findIndex((o) => o.id === productCard.id);
     if (index > -1) {
-      data_from_searver.splice(index, 1);
+      Cart.items.splice(index, 1);
     }
-    return data_from_searver;
+    return Cart.items;
   };
-  const Tocart = () => {
-    if (data_from_searver) {
-      Cart = data_from_searver;
-    }
-    const Consists = data_from_searver.some(
-      (prev) => prev.id === productCard.id
-    );
-    if (Consists) {
-      isExisting = true;
-    } else {
-      isExisting = false;
-    }
 
+
+  const addToCart = (item) => {
+    const isExisting = Cart.items.find((product) => product.id === item.id);
     if (isExisting) {
       setShowProductCard(true);
-      setData_from_searver((prev) => prev);
-      UpdateOrder(data_from_searver, id);
-      setData_from_searver((prev) => prev);
-
+      updateOrder(item.id);
+      setShowProductCard(false);
+      setShowDialogue(true);
+      const currentItems = Cart.items;
+      currentItems.push(item);
       setCart((prev) => {
-        return prev.map((data) => {
-          return data_from_searver;
-        });
+        return {
+          ...prev,
+          items: currentItems,
+          total: currentItems.reduce((prev, curr) => {
+            return prev + curr.price*curr.Quantity;
+          }, 0),
+        };
       });
-      Cart.push(productCard);
-      setShowProductCard(false)
-      setShowDialogue(true)
-      setdialogData(prev=>{
-        return{
-          Message:"You have Updated your order Successfully...",
-          title:productCard.title,
-          Quantity:productCard.Quantity,
-          price:productCard.price
-        }
-      })
-      setShowProductCard(false)
-      localStorage.setItem("Cart", JSON.stringify(Cart));
-      setData_from_searver((prev) => prev);
-      setCart((prev) => {
-        return prev.map((data) => {
-          return data_from_searver;
-        });
+      setdialogData({
+        Message: "You have Updated your order Successfully...",
+        title: item.title,
+        Quantity: item.Quantity,
+        price: item.price,
       });
+      setShowProductCard(false);
     } else {
-      setShowDialogue(true)
-      setShowProductCard(false)
-      setdialogData(prev=>{
-        return{
-          Message:"You have Placed your order Successfully...",
-          title:productCard.title,
-          Quantity:productCard.Quantity,
-          price:productCard.price
-        }
-      })
-     
-      Cart.push(productCard);
-      localStorage.setItem("Cart", JSON.stringify(Cart));
-      setData_from_searver((prev) => prev);
+      setShowDialogue(true);
+      setShowProductCard(false);
+      const currentItems = Cart.items;
+      currentItems.push(item);
       setCart((prev) => {
-        return prev.map((data) => {
-          return data_from_searver;
-        });
+        return {
+          ...prev,
+          items: currentItems,
+          total: currentItems.reduce((prev, curr) => {
+            return prev + curr.price*curr.Quantity;
+          }, 0),
+        };
+      });
+      setdialogData({
+        Message: "You have Placed your order Successfully...",
+        title: item.title,
+        Quantity: item.Quantity,
+        price: item.price,
       });
     }
   };
@@ -137,6 +116,7 @@ const ProductCard = (id, prodpic, title, price) => {
                 name="Quantity"
                 onChange={handleChange}
               >
+                <option value={""}>Select Quantity</option>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
@@ -146,7 +126,7 @@ const ProductCard = (id, prodpic, title, price) => {
               </select>
             </span>
           </p>
-          <button onClick={Tocart}>Done</button>
+          <button onClick={() => addToCart(productCard)}>Done</button>
         </div>
       </section>
     </AuthProvider>
