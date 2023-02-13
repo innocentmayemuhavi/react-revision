@@ -6,22 +6,21 @@ import { Link } from "react-router-dom";
 import { Checkout } from "../Checkout/Index";
 import "./index.css";
 const CartComponent = () => {
-  const { Cart, setCart, showCheckout, setShowCheckout, setShowDialogue } =
+  const { Cart, showCheckout, setShowCheckout, setShowDialogue, setCart } =
     useContext(AuthContext);
-  const removing = (id, item) => {
-    const index = Cart.items.findIndex((prev) => prev.id === id);
-    if (index > -1) {
-      Cart.items.splice(index, 1);
-    }
-
-    return Cart;
-  };
 
   const removeFromCart = (id, item) => {
-    console.log(id);
-    removing(id, item);
-
-    localStorage.setItem("Cart", JSON.stringify(Cart));
+    const list = Cart.items.filter((prod) => prod.id !== id);
+    console.log(list);
+    setCart((prev) => {
+      return {
+        ...prev,
+        items: list,
+        total: list.reduce((prev, curr) => {
+          return prev + curr.price;
+        }, 0),
+      };
+    });
   };
   const render = Cart.items.map((props) => {
     return (

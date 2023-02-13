@@ -1,4 +1,4 @@
-import { AuthContext, AuthProvider } from "../../context";
+import { AuthProvider } from "../../context";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CartComponent } from "../cart/CartComponent";
 import Homepage from "../homepage";

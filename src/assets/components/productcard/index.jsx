@@ -22,6 +22,7 @@ const ProductCard = (id, prodpic, title, price) => {
       Cart.items.splice(index, 1);
     }
     return Cart.items;
+    
   };
 
 

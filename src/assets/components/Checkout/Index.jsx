@@ -5,9 +5,8 @@ import { Pay_By_Card } from "./Pay_by_card";
 import { Pay_By_Mpesa } from "./Pay_by_m_pesa";
 
 const Checkout = () => {
-  const { showCheckout, setShowCheckout } = useContext(AuthContext);
   const [showvisa, setshowvisa] = useState(true);
-  const { User, setUser } = useContext(AuthContext);
+  const { User } = useContext(AuthContext);
   const styles = {
     backgroundColor: showvisa ? "goldenrod" : "",
     fontWeight: showvisa ? 800 : "",
@@ -19,10 +18,8 @@ const Checkout = () => {
 
   return (
     <section className="checkout-modal">
-      
       <b>
-      <p className="checkout-header">Checkout</p>
-        {" "}
+        <p className="checkout-header">Checkout</p>{" "}
         <marquee>Remember data is not submited. App on Demo...!</marquee>
       </b>
       <fieldset>

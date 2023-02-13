@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 const Pay_By_Card = () => {
   const [Details, setdetails] = useState({});

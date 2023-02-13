@@ -1,6 +1,6 @@
 .deal {
   font-size: 12px;
-  margin: 17px 2px;
+  margin:0 auto;
   position: relative;
   height: 240px;
   background-color: ghostwhite;
@@ -8,6 +8,7 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .deal-content {
   flex: 1;

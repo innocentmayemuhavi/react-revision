@@ -1,6 +1,5 @@
-import "./index.css"
+import "./index.css";
 const Footer = () => {
-
   return (
     <footer>
       <a href="">

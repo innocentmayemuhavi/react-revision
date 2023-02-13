@@ -10,8 +10,7 @@ import { CartComponent } from "../cart/CartComponent"
 
 
 const ChristmassDeals=()=>{
-  const {showCartPage,setshowcartpage}=useContext(AuthContext)
-  const {SeachVal,setSearchval}=useContext(AuthContext)
+  const {showCartPage,SeachVal}=useContext(AuthContext)
   const filtered=ProductData.filter((fill)=>fill.title.toLocaleLowerCase().includes(`${SeachVal.toLocaleLowerCase()}`))
     const prods=filtered.map((prod)=>{
         return(

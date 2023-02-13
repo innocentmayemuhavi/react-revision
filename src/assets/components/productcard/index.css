@@ -18,7 +18,7 @@
     border-radius: 6px;
     padding: 20px;
     width: 100%;
-    max-width: 50%;
+    max-width: 400px;
     position: relative;
     z-index: 1001;
     overflow: hidden;
@@ -71,8 +71,10 @@
   
 .deals {
     display: grid;
-    gap: 17px;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .status {
