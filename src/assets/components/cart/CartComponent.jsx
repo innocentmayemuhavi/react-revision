@@ -3,10 +3,9 @@ import { useContext, useState } from "react";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
-import { Checkout } from "../Checkout/Index";
 import "./index.css";
 const CartComponent = () => {
-  const { Cart, showCheckout, setShowCheckout, setShowDialogue, setCart } =
+  const { Cart,setShowDialogue, setCart } =
     useContext(AuthContext);
 
   const removeFromCart = (id, item) => {
@@ -59,6 +58,7 @@ const CartComponent = () => {
   return (
     <>
       <Header />
+  
       <div>
         <p>Your Cart Has {Cart.items.length} Item(s)</p>
         <p className="d-flex justfy-content-left">Total Amount:{Cart.total}</p>
@@ -74,15 +74,13 @@ const CartComponent = () => {
               {Cart.items.length == 0 ? "Add Items" : "Close Cart"}
             </button>
           </Link>
-          <button
+          <Link to={"/checkout"}><button
             className="checkout-btn"
             onClick={() => setShowCheckout((prev) => !prev)}
-          >
-            {showCheckout ? "Cancel" : "Show"} Check-Out
-          </button>
+          >Show Check-Out
+          </button></Link>
         </div>
       </div>
-      {showCheckout && <Checkout />}
       <Footer />
     </>
   );
