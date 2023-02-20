@@ -73,3 +73,16 @@ table {
   height: 40px;
   object-fit: cover;
 }
+.deliverydata{
+display: grid;
+grid-template-columns: repeat(auto-fill,minmax(49%,1fr));
+gap: 10px;
+justify-content: center;
+}
+
+@media screen and (max-width: 960px) {
+  .deliverydata{
+  display: flex;
+  flex-direction: column;
+  }
+}

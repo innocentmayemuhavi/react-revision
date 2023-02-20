@@ -59,9 +59,16 @@ const Checkout = () => {
     </table>
     <p>Total:.Ksh.<b>{Cart.total}</b></p>
       </fieldset>
-      <fieldset>
+      <fieldset className="deliverydata">
         <legend>Delivery Details</legend>
-        <p>
+      <section className="userdata">
+      <fieldset style={{
+        padding:4,
+        marginTop:33 ,
+        marginBottom:9
+      }}>
+        <legend>Recipient Details And Address</legend>
+      <p>
           User Name:<span className="grey">{User.name}</span>
         </p>
         <p>
@@ -80,6 +87,7 @@ const Checkout = () => {
           {" "}
           Residence:<span className="grey">{User.Residence}</span>
         </p>
+      </fieldset>
         <div className="checkout-method-select">
           <button
             className="mobile-money"
@@ -96,6 +104,8 @@ const Checkout = () => {
             Mobile Money
           </button>
         </div>
+      </section>
+      
         <section>{showvisa ? <Pay_By_Card /> : <Pay_By_Mpesa />}</section>
       </fieldset>
     </section>
