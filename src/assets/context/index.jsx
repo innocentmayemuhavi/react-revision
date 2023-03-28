@@ -70,15 +70,14 @@ const AuthProvider = ({ children }) => {
             total: 0,
           }
         : JSON.parse(localStorage.getItem("Cart"));
-   setCart(savedCart)
-
+    setCart(savedCart);
   }, []);
 
-  useEffect(()=>{
-if(Cart){
-  localStorage.setItem("Cart",JSON.stringify(Cart))
-}
-  },[Cart])
+  useEffect(() => {
+    if (Cart) {
+      localStorage.setItem("Cart", JSON.stringify(Cart));
+    }
+  }, [Cart]);
   return (
     <AuthContext.Provider
       value={{

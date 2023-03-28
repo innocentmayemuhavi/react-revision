@@ -4,8 +4,10 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { ProductCard } from "../productcard";
 const CartComponent = () => {
-  const { Cart, setShowDialogue, setCart } = useContext(AuthContext);
+  const { Cart, setCart, setShowProductCard, showProductCard, setProductCard } =
+    useContext(AuthContext);
 
   const UpdateDataBase = () => {
     setCart((prev) => {
@@ -99,13 +101,32 @@ const CartComponent = () => {
         </div>
         <div className="deal-content">
           <p>
-            Name:<span className="grey">{props.title}</span>
+            Name:
+            <Link
+              to={""}
+              onClick={() => {
+                setShowProductCard(true);
+                setProductCard({ ...props });
+                setProductCard((prev) => {
+                  return {
+                    ...prev,
+                    Message: "Updating Order...",
+                  };
+                });
+              }}
+            >
+              <span className="grey">{props.title}</span>
+            </Link>
           </p>
           <p className="quantity">
             Quantity:
             <span className="grey">
               <button
-                className={props.Quantity>1?"quantity-control":"quantity-control inactive"}
+                className={
+                  props.Quantity > 1
+                    ? "quantity-control"
+                    : "quantity-control inactive"
+                }
                 onClick={() => Minus(props.id)}
               >
                 {" "}
@@ -134,7 +155,9 @@ const CartComponent = () => {
           </p>
           <p>
             Price:
-            <span className="grey">Ksh.{Math.round(props.price * props.Quantity).toLocaleString()}</span>
+            <span className="grey">
+              Ksh.{Math.round(props.price * props.Quantity).toLocaleString()}
+            </span>
           </p>
         </div>
       </div>
@@ -143,10 +166,12 @@ const CartComponent = () => {
   return (
     <>
       <Header />
-
+      {showProductCard && <ProductCard />}
       <div>
         <p>Your Cart Has {Cart.items.length} Item(s)</p>
-        <p className="d-flex justfy-content-left">Total Amount:{Cart.total.toLocaleString()}</p>
+        <p className="d-flex justfy-content-left">
+          Total Amount:{Cart.total.toLocaleString()}
+        </p>
         <div className="deals">{render}</div>
 
         <div className="cart-btns">
@@ -160,12 +185,7 @@ const CartComponent = () => {
             </button>
           </Link>
           <Link to={"/checkout"}>
-            <button
-              className="checkout-btn"
-              onClick={() => setShowCheckout((prev) => !prev)}
-            >
-              Show Check-Out
-            </button>
+            <button className="checkout-btn">Show Check-Out</button>
           </Link>
         </div>
       </div>

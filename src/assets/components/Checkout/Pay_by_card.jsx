@@ -30,7 +30,7 @@ const Pay_By_Card = () => {
             onChange={Check}
             maxLength={14}
           />
-          <label>Card Src No:</label>
+          <label>Card CVV :</label>
           <input
             type={"number"}
             required={true}

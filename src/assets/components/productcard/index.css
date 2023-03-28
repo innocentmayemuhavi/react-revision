@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
+    padding: 1px 5px;
   }
   
   .product-card-content {
@@ -44,6 +44,7 @@
     width: 70px;
     border-radius: 14px;
     font-weight: 700;
+    margin: 5px;
     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
   }
   .product-card-picture {
@@ -87,5 +88,15 @@
     box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.25);
     top: 3px;
     left: 4px;
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .product-card{
+      padding: 2px 2px;
+    }
+    .product-card-content{
+      max-width: 350px;
+    }
+  
   }
   

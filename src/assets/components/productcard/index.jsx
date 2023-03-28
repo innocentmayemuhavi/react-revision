@@ -24,32 +24,41 @@ const ProductCard = (id, prodpic, title, price) => {
     console.log(productCard);
   };
 
-  const updateOrder = (id) => {
-    const index = Cart.items.findIndex((o) => o.id === productCard.id);
-    if (index > -1) {
-      Cart.items.splice(index, 1);
-    }
-    return Cart.items;
+  const UpdateDataBase = () => {
+    setCart((prev) => {
+      return {
+        ...prev,
+
+        total: prev.items.reduce((prev, curr) => {
+          return prev + curr.price * curr.Quantity;
+        }, 0),
+      };
+    });
   };
+ 
 
   const addToCart = (item) => {
     const isExisting = Cart.items.find((product) => product.id === item.id);
     if (isExisting) {
       setShowProductCard(true);
-      updateOrder(item.id);
       setShowProductCard(false);
       setShowDialogue(true);
-      const currentItems = Cart.items;
-      currentItems.push(item);
+      
       setCart((prev) => {
         return {
           ...prev,
-          items: currentItems,
-          total: currentItems.reduce((prev, curr) => {
-            return prev + curr.price * curr.Quantity;
+          items: prev.items.map(data=>{
+            return data.id===item.id?{
+              ...data,
+              Quantity:productCard.Quantity
+            }:data
+          }),
+          total: prev.items.reduce((previous, curr) => {
+            return previous + curr.price * curr.Quantity;
           }, 0),
         };
       });
+      UpdateDataBase()
       setdialogData({
         Message: "You have Updated your order Successfully...",
         title: item.title,
