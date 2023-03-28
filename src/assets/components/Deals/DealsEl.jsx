@@ -26,7 +26,7 @@ const DealsEl = (props) => {
       Cart.push({
         id: id,
         title: title,
-        price: price,
+        price: price*1,
         prodpic: prodpic,
       });
       localStorage.setItem("Cart", JSON.stringify(Cart));

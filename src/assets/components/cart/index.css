@@ -56,3 +56,28 @@
     border: 0.27em solid blue;
   }
   
+  .quantity-control{
+    padding: 1px 3px;
+    margin: 0px 3px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    line-height: .5;
+    background-color: #fff;
+    transition: .8s;
+    border: 2px solid black;
+    cursor: pointer;
+  }
+
+
+ 
+  .quantity{
+    display: flex;
+    align-items: center;
+  }
+  .inactive,.inactive:hover,.inactive:focus{
+    background-color: gray;
+    border: 2px solid  grey;
+    fill: #fff;
+  }
+  

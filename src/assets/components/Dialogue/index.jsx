@@ -9,7 +9,7 @@ const Dialog = () => {
     <section className="dialog-overlay">
       <section className="dialog-content">
         <div className="dialog-header">
-          <p>Dialog Header</p>
+          <p>App Dialog</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const Dialog = () => {
           <p>
             Price:
             <span className="grey">
-              Ksh.{dialogData.Quantity * dialogData.price}
+              Ksh.{(dialogData.Quantity*1 * dialogData.price).toLocaleString()}
             </span>
           </p>
         </fieldset>

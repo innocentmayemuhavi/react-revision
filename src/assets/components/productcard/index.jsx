@@ -1,9 +1,17 @@
 import React from "react";
 import { useContext, useEffect } from "react";
 import { AuthContext, AuthProvider } from "../../context";
-import "./index.css"
+import "./index.css";
 const ProductCard = (id, prodpic, title, price) => {
-  const { productCard, setProductCard,setShowProductCard,setdialogData, setShowDialogue,Cart, setCart   } = useContext(AuthContext);
+  const {
+    productCard,
+    setProductCard,
+    setShowProductCard,
+    setdialogData,
+    setShowDialogue,
+    Cart,
+    setCart,
+  } = useContext(AuthContext);
   useEffect(() => {
     console.log(productCard);
   }, [productCard]);
@@ -22,9 +30,7 @@ const ProductCard = (id, prodpic, title, price) => {
       Cart.items.splice(index, 1);
     }
     return Cart.items;
-    
   };
-
 
   const addToCart = (item) => {
     const isExisting = Cart.items.find((product) => product.id === item.id);
@@ -40,15 +46,15 @@ const ProductCard = (id, prodpic, title, price) => {
           ...prev,
           items: currentItems,
           total: currentItems.reduce((prev, curr) => {
-            return prev + curr.price*curr.Quantity;
+            return prev + curr.price * curr.Quantity;
           }, 0),
         };
       });
       setdialogData({
         Message: "You have Updated your order Successfully...",
         title: item.title,
-        Quantity: item.Quantity,
-        price: item.price,
+        Quantity: item.Quantity * 1,
+        price: item.price * 1,
       });
       setShowProductCard(false);
     } else {
@@ -61,15 +67,15 @@ const ProductCard = (id, prodpic, title, price) => {
           ...prev,
           items: currentItems,
           total: currentItems.reduce((prev, curr) => {
-            return prev + curr.price*curr.Quantity;
+            return prev + curr.price * curr.Quantity;
           }, 0),
         };
       });
       setdialogData({
         Message: "You have Placed your order Successfully...",
         title: item.title,
-        Quantity: item.Quantity,
-        price: item.price,
+        Quantity: item.Quantity * 1,
+        price: item.price * 1,
       });
     }
   };

@@ -30,7 +30,7 @@ const ChristmassDealsEl = (props) => {
           Message: "Product Already Exist! Updating Order...",
           prodpic: prodpic,
           title: title,
-          price: price,
+          price: price*1,
         };
       });
     } else {
@@ -40,7 +40,7 @@ const ChristmassDealsEl = (props) => {
           Message: "Placing Order...",
           prodpic: prodpic,
           title: title,
-          price: price,
+          price: price*1,
         };
       });
     }

@@ -27,10 +27,10 @@ const Checkout = () => {
         {prod.Quantity}
       </td>
       <td>
-       Ksh. {prod.price}
+       Ksh. {Math.round(prod.price).toLocaleString()}
       </td>
       <td>
-        Ksh. {prod.price*prod.Quantity}
+        Ksh. {Math.round(prod.price*prod.Quantity).toLocaleString()}
       </td>
     </tr>
   })
@@ -57,7 +57,7 @@ const Checkout = () => {
       <th>Amount</th>
      <tbody> {render}</tbody>
     </table>
-    <p>Total:.Ksh.<b>{Cart.total}</b></p>
+    <p>Total:.Ksh.<b>{Cart.total.toLocaleString()}</b></p>
       </fieldset>
       <fieldset className="deliverydata">
         <legend>Delivery Details</legend>

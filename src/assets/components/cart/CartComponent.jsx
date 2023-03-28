@@ -5,8 +5,19 @@ import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import "./index.css";
 const CartComponent = () => {
-  const { Cart,setShowDialogue, setCart } =
-    useContext(AuthContext);
+  const { Cart, setShowDialogue, setCart } = useContext(AuthContext);
+
+  const UpdateDataBase = () => {
+    setCart((prev) => {
+      return {
+        ...prev,
+
+        total: prev.items.reduce((prev, curr) => {
+          return prev + curr.price * curr.Quantity;
+        }, 0),
+      };
+    });
+  };
 
   const removeFromCart = (id, item) => {
     const list = Cart.items.filter((prod) => prod.id !== id);
@@ -16,10 +27,56 @@ const CartComponent = () => {
         ...prev,
         items: list,
         total: list.reduce((prev, curr) => {
-          return prev + curr.price;
+          return prev + curr.price * curr.Quantity;
         }, 0),
       };
     });
+  };
+  const Add = (id) => {
+    console.log(id);
+
+    setCart((prev) => {
+      return {
+        ...prev,
+        items: prev.items.map((data) => {
+          return data.id === id
+            ? {
+                ...data,
+                Quantity: data.Quantity * 1 + 1,
+              }
+            : data;
+        }),
+        total: prev.items.reduce((prev, curr) => {
+          return prev + curr.price * curr.Quantity;
+        }, 0),
+      };
+    });
+
+    UpdateDataBase();
+  };
+  const Minus = (id) => {
+    console.log(id);
+
+    const fill = Cart.items.filter((data) => data.id === id);
+    if (fill[0].Quantity > 1) {
+      setCart((prev) => {
+        return {
+          ...prev,
+          items: prev.items.map((data) => {
+            return data.id === id
+              ? {
+                  ...data,
+                  Quantity: data.Quantity * 1 - 1,
+                }
+              : data;
+          }),
+          total: prev.items.reduce((prev, curr) => {
+            return prev + curr.price * curr.Quantity;
+          }, 0),
+        };
+      });
+    }
+    UpdateDataBase();
   };
   const render = Cart.items.map((props) => {
     return (
@@ -44,12 +101,40 @@ const CartComponent = () => {
           <p>
             Name:<span className="grey">{props.title}</span>
           </p>
-          <p>
-            Quantity:<span className="grey">{props.Quantity}</span>
+          <p className="quantity">
+            Quantity:
+            <span className="grey">
+              <button
+                className={props.Quantity>1?"quantity-control":"quantity-control inactive"}
+                onClick={() => Minus(props.id)}
+              >
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  height="16"
+                >
+                  <path d="M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z"></path>
+                </svg>
+              </button>
+              {props.Quantity}
+            </span>
+            <button className="quantity-control" onClick={() => Add(props.id)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                className="sf"
+              >
+                <path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path>
+              </svg>
+            </button>
           </p>
           <p>
             Price:
-            <span className="grey">Ksh.{props.price * props.Quantity}</span>
+            <span className="grey">Ksh.{Math.round(props.price * props.Quantity).toLocaleString()}</span>
           </p>
         </div>
       </div>
@@ -58,10 +143,10 @@ const CartComponent = () => {
   return (
     <>
       <Header />
-  
+
       <div>
         <p>Your Cart Has {Cart.items.length} Item(s)</p>
-        <p className="d-flex justfy-content-left">Total Amount:{Cart.total}</p>
+        <p className="d-flex justfy-content-left">Total Amount:{Cart.total.toLocaleString()}</p>
         <div className="deals">{render}</div>
 
         <div className="cart-btns">
@@ -74,11 +159,14 @@ const CartComponent = () => {
               {Cart.items.length == 0 ? "Add Items" : "Close Cart"}
             </button>
           </Link>
-          <Link to={"/checkout"}><button
-            className="checkout-btn"
-            onClick={() => setShowCheckout((prev) => !prev)}
-          >Show Check-Out
-          </button></Link>
+          <Link to={"/checkout"}>
+            <button
+              className="checkout-btn"
+              onClick={() => setShowCheckout((prev) => !prev)}
+            >
+              Show Check-Out
+            </button>
+          </Link>
         </div>
       </div>
       <Footer />

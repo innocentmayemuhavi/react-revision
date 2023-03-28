@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(()=>{
-if(Cart.items){
+if(Cart){
   localStorage.setItem("Cart",JSON.stringify(Cart))
 }
   },[Cart])
