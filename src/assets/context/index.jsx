@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
   });
   useEffect(() => {
     const savedCart =
-      localStorage.getItem("Cart") === "undefined"
+      localStorage.getItem("Cart") === null
         ? {
             items: [],
             total: 0,
